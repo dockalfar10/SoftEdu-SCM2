@@ -3,17 +3,19 @@
 ## 1. Identificación del Elemento de Configuración (CI)
 * **Código del CI:** REQ-001
 * **Proyecto:** SoftEdu-SCM
-* **Versión:** 1.0
-* **Estado:** Aprobado para línea base inicial
+* **Versión:** 1.1
+* **Estado:** En modificación por CR-001
 * **Fecha:** 09-10-2026
-* **Responsable:** OWNER
+* **Responsable:** Equipo SoftEdu
+* **Responsable de cambio:** Wacko Dev
 
 ---
 
 ## 2. Historial de Versiones
 | Versión | Fecha | Descripción del cambio | Responsable |
 | :--- | :--- | :--- | :--- |
-| `1.0` | 09-10-2026 | Creación inicial del requerimiento y establecimiento de línea base. | OWNER |
+| `1.0` | 09-10-2026 | Creación inicial del requerimiento y establecimiento de línea base. | Equipo SoftEdu |
+| `1.1` | 09-10-2026 | Se agrega número de teléfono del estudiante a CR-001. | Wacko Dev |
 
 ---
 
@@ -27,7 +29,7 @@
 
 ### Requisitos Funcionales
 * **RF-01 - Gestión de la información principal del proyecto**
-  * **Descripción:** El sistema deberá permitir registrar, consultar, actualizar y eliminar la información principal del proyecto, incluyendo código, nombre, descripción, responsable, fechas relevantes y estado actual.
+  * **Descripción:** El sistema deberá permitir registrar, consultar, actualizar y eliminar la información principal del proyecto, incluyendo código, nombre, teléfono, descripción, responsable, fechas relevantes y estado actual.
   * **Criterios de aceptación:**
     * El sistema debe mantener un registro único para cada proyecto.
     * La información del proyecto debe poder visualizarse y editarse desde una interfaz de gestión.

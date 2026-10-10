@@ -1,66 +1,76 @@
-# DIS-001 - Diseño del Sistema
+# DIS-001 - Diseño del Sistema SoftEdu
 
-## 1. Identificación del Elemento de Configuración (CI)
-* **Código del CI:** DIS-001
-* **Proyecto:** SoftEdu-SCM
-* **Versión:** 1.0
-* **Estado:** Borrador / En revisión
-* **Fecha:** 09-10-2026
-* **Responsable:** OWNER
+## Información del elemento de configuración
+- Código del CI: DIS-001
+- Nombre: Diseño del Sistema
+- Proyecto: SoftEdu
+- Versión: 1.1
+- Estado: En modificación por CR-001
+- Fecha: 16/09/2026
+- Responsable: Equipo SoftEdu
+- Responsable del cambio: Minerva2026410
 
----
-
-## 2. Historial de Versiones
+## Historial de versiones
 | Versión | Fecha | Descripción del cambio | Responsable |
 | :--- | :--- | :--- | :--- |
-| `1.0` | 09-10-2026 | Creación inicial del diseño del sistema. | OWNER |
+| `1.0` | 09/09/2026 | Diseño inicial del sistema | Equipo SoftEdu[cite: 36] |
+| `1.1` | 16/09/2026 | Se agrega el atributo teléfono a la entidad Estudiante según CR-001 | Minerva2026410[cite: 36] |
 
----
+## 1. Descripción general
+SoftEdu se organiza en tres componentes principales:
+1. Gestión de estudiantes.
+2. Gestión de cursos.
+3. Gestión de matrículas.[cite: 36]
 
-## 3. Propósito y Alcance
-* **Propósito:** Definir la arquitectura de datos, los componentes principales, los flujos de interacción y la trazabilidad con los requisitos funcionales del sistema SoftEdu-SCM.
-* **Alcance:** Abarca el diseño lógico del módulo central de gestión de proyectos, especificando entidades de base de datos y flujos operacionales principales.
+## 2. Entidades principales
 
----
+### Estudiante
+La entidad Estudiante contiene los siguientes atributos:
+- identificacion
+- nombreCompleto
+- correoElectronico
+- telefono[cite: 36]
 
-## 4. Trazabilidad con Requisitos
-| Código de Requisito (REQ) | Componente / Módulo de Diseño Asociado | Descripción de la Relación |
-| :--- | :--- | :--- |
-| **REQ-001** | Módulo de Proyectos / Entidad `Proyecto` | El diseño de la base de datos y la interfaz de gestión implementan directamente las operaciones CRUD definidas en el REQ-001. |
+### Curso
+La entidad Curso contiene:
+- codigoCurso
+- nombreCurso
+- numeroCreditos[cite: 36, 37]
 
----
+### Matricula
+La entidad Matricula contiene:
+- identificacionEstudiante
+- codigoCurso
+- fechaMatricula[cite: 37]
 
-## 5. Diseño de Entidades y Atributos
+## 3. Relación entre requisitos y diseño
+| Requisito | Elemento de diseño asociado |
+| :--- | :--- |
+| RF-01 Registrar estudiante | Entidad Estudiante (incluye atributo telefono)[cite: 37] |
+| RF-02 Consultar estudiante | Entidad Estudiante[cite: 37] |
+| RF-03 Registrar curso | Entidad Curso[cite: 37] |
+| RF-04 Matricular estudiante | Entidad Matricula[cite: 37] |
 
-### Entidad: `Proyecto`
-Representa la información principal de cada proyecto registrado en la plataforma.
+## 4. Flujo general
 
-| Atributo | Tipo de Dato | Restricciones / Clave | Descripción |
-| :--- | :--- | :--- | :--- |
-| `id` | UUID / INT | PK, Not Null | Identificador único del proyecto. |
-| `codigo` | VARCHAR(50) | Unique, Not Null | Código alfanumérico de identificación interna del proyecto. |
-| `nombre` | VARCHAR(150) | Not Null | Nombre descriptivo del proyecto. |
-| `descripcion` | TEXT | Nullable | Resumen detallado del propósito del proyecto. |
-| `responsable` | VARCHAR(100) | Not Null | Nombre o ID del usuario a cargo del proyecto. |
-| `estado` | VARCHAR(30) | Not Null (Ej: Activo, Pausado, Finalizado) | Estado actual en el ciclo de vida del proyecto. |
-| `fecha_inicio` | DATE | Not Null | Fecha de inicio planificada. |
-| `fecha_fin` | DATE | Nullable | Fecha estimada o real de finalización. |
-| `created_at` | TIMESTAMP | Default CURRENT_TIMESTAMP | Fecha de creación del registro. |
-| `updated_at` | TIMESTAMP | Default CURRENT_TIMESTAMP | Fecha de última modificación. |
+### Registro de estudiante
+1. El usuario ingresa la información del estudiante.
+2. El sistema valida los datos obligatorios.
+3. El sistema crea un objeto Estudiante.
+4. El sistema almacena la información.[cite: 37]
 
----
+### Registro de curso
+1. El usuario ingresa los datos del curso.
+2. El sistema valida la información.
+3. El sistema almacena el curso.[cite: 37]
 
-## 6. Flujos del Sistema y Diagrama Lógico
+### Matrícula
+1. El usuario selecciona un estudiante.
+2. El usuario selecciona un curso.
+3. El sistema verifica que ambos existan.
+4. El sistema registra la matrícula.[cite: 37]
 
-### Flujo Principal: Gestión y Registro de Proyectos
-1. **Inicio:** El usuario administrador accede a la sección de proyectos en la interfaz de gestión.
-2. **Validación de Identidad:** El sistema valida los permisos y roles del usuario autenticado (relacionado con el cumplimiento de seguridad).
-3. **Operación CRUD:**
-   * *Crear/Actualizar:* El usuario ingresa los datos requeridos. El sistema valida que los campos obligatorios no estén vacíos antes de enviarlos a la capa de persistencia.
-   * *Consultar/Eliminar:* El sistema busca o da de baja el registro único correspondiente en la entidad `Proyecto`.
-4. **Cierre:** El sistema confirma la transacción con un mensaje de éxito o alerta de error en caso de fallo en las validaciones.
-
----
-
-## 7. Control de Cambios y Línea Base
-> **Observación de Gestión de Configuración:** Cualquier modificación arquitectónica o estructural sobre este diseño **posterior al establecimiento de la línea base** deberá gestionarse formalmente mediante el proceso de control de cambios de SoftEdu-SCM.
+## 5. Trazabilidad de diseño
+Este diseño se deriva de los requisitos definidos en el elemento de configuración REQ-001 versión 1.1[cite: 37].  
+La versión 1.1 de DIS-001 se actualiza como consecuencia de la solicitud de cambio CR-001 - Agregar teléfono al estudiante[cite: 37].  
+Cualquier modificación que afecte la estructura de estudiantes, cursos o matrículas deberá evaluarse para determinar su impacto sobre este elemento de configuración[cite: 37].
