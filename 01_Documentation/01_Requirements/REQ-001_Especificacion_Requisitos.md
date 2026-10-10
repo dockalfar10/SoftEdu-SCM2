@@ -4,7 +4,7 @@
 * **Código del CI:** REQ-001
 * **Proyecto:** SoftEdu-SCM
 * **Versión:** 1.1
-* **Estado:** En modificación por CR-001
+* **Estado:** Aprobado para BL-002
 * **Fecha:** 09-10-2026
 * **Responsable:** Equipo SoftEdu
 * **Responsable de cambio:** Wacko Dev
