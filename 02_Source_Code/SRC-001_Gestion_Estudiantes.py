@@ -1,8 +1,12 @@
 """
 SRC-001: Módulo de Gestión (Código Fuente)
 Proyecto: SoftEdu-SCM
-Versión: 1.0
-Descripción: Implementación de la clase lógica correspondiente al REQ-001 y DIS-001.
+Versión: 1.1
+Estado: En modificación por CR-001
+Fecha: 16/09/2026
+Responsable: Equipo SoftEdu
+Responsable del cambio: Minerva2026410
+Descripción: Implementación de la clase lógica correspondiente al REQ-001 y DIS-001 (Actualizado con CR-001).
 """
 
 class GestionProyectoEstudiante:
@@ -10,8 +14,8 @@ class GestionProyectoEstudiante:
         # Simulación de una base de datos o almacenamiento en memoria local
         self.registros = []
 
-    def crear_registro(self, codigo: str, nombre: str, descripcion: str, responsable: str, estado: str):
-        """Registra un nuevo elemento validando campos obligatorios."""
+    def crear_registro(self, codigo: str, nombre: str, descripcion: str, responsable: str, estado: str, telefono: str = ""):
+        """Registra un nuevo elemento validando campos obligatorios e incorporando teléfono."""
         if not codigo or not nombre or not responsable:
             raise ValueError("Los campos código, nombre y responsable son obligatorios.")
         
@@ -20,10 +24,11 @@ class GestionProyectoEstudiante:
             "nombre": nombre,
             "descripcion": descripcion,
             "responsable": responsable,
-            "estado": estado
+            "estado": estado,
+            "telefono": telefono
         }
         self.registros.append(nuevo_item)
-        return f"Registro '{nombre}' creado exitosamente."
+        return f"Registro '{nombre}' creado exitosamente con teléfono: {telefono}."
 
     def consultar_registros(self):
         """Retorna todos los registros almacenados."""
@@ -50,13 +55,14 @@ class GestionProyectoEstudiante:
 if __name__ == "__main__":
     modulo = GestionProyectoEstudiante()
     
-    # Prueba de creación
+    # Prueba de creación con el nuevo atributo de teléfono (CR-001)
     print(modulo.crear_registro(
         codigo="PROJ-001",
         nombre="Plataforma Educativa",
         descripcion="Desarrollo del core de gestión escolar",
         responsable="OWNER",
-        estado="Activo"
+        estado="Activo",
+        telefono="3001234567"
     ))
     
     # Prueba de consulta
