@@ -2,7 +2,7 @@
 SRC-001: Módulo de Gestión (Código Fuente)
 Proyecto: SoftEdu-SCM
 Versión: 1.1
-Estado: En modificación por CR-001
+Estado: Aprobado para BL-002
 Fecha: 16/09/2026
 Responsable: Equipo SoftEdu
 Responsable del cambio: Minerva2026410
